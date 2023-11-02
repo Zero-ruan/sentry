@@ -11,4 +11,4 @@
 
 ## issue 
 1. Without using replay.setupOnce() and using replay.stop() and then executing replay.start(), I don't see the replay being generated when I create an error on the page. but using replay.setupOnce() and then executing replay.start() everything works fine!
-2. Refreshing will perform the first step above again, resulting in the generation of a replay without errors
+2. I used replaysSessionSampleRate: 0 and startBuffer, but when I create an 'ApolloError: Response not successful: Received status code 400' error' to generate a replay, and then switch roles (start a new replay), create this type again The error will not generate a replay, but if other types of errors are made at this time, such as (xxx is not a function), the replay will be generated normally. I think that when replaysSessionSampleRate is 0, the same type of error will only be recorded once, because I use replaysSessionSampleRate : 1, two replays of the same type of error will be generated.
